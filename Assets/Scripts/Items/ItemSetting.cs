@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public enum Type
@@ -23,9 +22,13 @@ public class ItemSetting : MonoBehaviour
     public Rare Rare;
     public string Name;
     //[SerializeField] private List<Param> _params;
-    public string[,] AreaInInventory = new string[4, 2] { { "-", "-" }, 
-                                                        { "-", "-" },
-                                                        { "-", "-" },
-                                                        { "-", "-" }
+    public string[,] AreaInInventory = new string[4, 2]
+    {
+        {"-", "-"},
+        {"-", "-"},
+        {"-", "-"},
+        {"-", "-"}
     };
+
 }
+

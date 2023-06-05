@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform _inventoryAnchor;
+    [SerializeField] private InventoryManager _inventoryManager;
+    [SerializeField] private Sprite _sprite;
+    [SerializeField] private ItemSetting _itemSetting;
+    
+    private void OnMouseDown()
     {
-        
+        _itemSetting = GetComponent<ItemSetting>();
+        GetItem();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _inventoryManager = _inventoryAnchor.GetComponent<InventoryManager>();
+    }
+
+    public void GetItem()
+    {
+        gameObject.transform.SetParent(_inventoryAnchor);
+        gameObject.SetActive(false);
+        _inventoryManager.GetItem(_sprite);
+        _inventoryManager.GetSaveCells(_itemSetting.AreaInInventory);
     }
 }
